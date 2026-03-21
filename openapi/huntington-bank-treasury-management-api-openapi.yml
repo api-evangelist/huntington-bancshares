@@ -1,0 +1,223 @@
+openapi: 3.1.0
+info:
+  title: Huntington Bank Treasury Management API
+  description: >-
+    The Huntington Bank Treasury Management API is part of Huntington's
+    Treasury Management Connectivity Ecosystem, an API-first platform
+    that enables businesses to unify banking, ERP, and financial tools.
+    Built on Apigee X, the platform supports over 500 interfaces and
+    processes more than 10 million transaction events daily, providing
+    real-time visibility into treasury operations, automated payment
+    processing, and seamless integration with enterprise systems.
+  version: '1.0'
+  contact:
+    name: Huntington Bank Developer Support
+    url: https://hnbdevportal.huntington.com/
+externalDocs:
+  description: Huntington Bank Developer Portal
+  url: https://hnbdevportal.huntington.com/
+servers:
+  - url: https://api.huntington.com/v1
+    description: Production
+tags:
+  - name: Accounts
+    description: Account information and balances
+  - name: Transactions
+    description: Transaction reporting and history
+  - name: Payments
+    description: Payment initiation and management
+security:
+  - oauth2: []
+paths:
+  /accounts:
+    get:
+      operationId: getAccounts
+      summary: Get treasury accounts
+      description: >-
+        Retrieves a list of treasury and deposit accounts for the
+        authenticated business customer.
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+        '401':
+          description: Unauthorized
+  /accounts/{accountId}/balances:
+    get:
+      operationId: getAccountBalances
+      summary: Get account balances
+      description: >-
+        Retrieves current and available balance information for a
+        specific account.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique account identifier
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+  /accounts/{accountId}/transactions:
+    get:
+      operationId: getTransactions
+      summary: Get account transactions
+      description: >-
+        Retrieves transaction history for a specific account with
+        optional date range filtering.
+      tags:
+        - Transactions
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique account identifier
+        - name: fromDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+  /payments:
+    post:
+      operationId: initiatePayment
+      summary: Initiate a payment
+      description: >-
+        Initiates a payment transaction from a treasury account.
+      tags:
+        - Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '201':
+          description: Payment initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.huntington.com/oauth/token
+          scopes:
+            accounts:read: Read account data
+            transactions:read: Read transactions
+            payments:write: Initiate payments
+  schemas:
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    Account:
+      type: object
+      properties:
+        accountId:
+          type: string
+        accountType:
+          type: string
+        accountName:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+    AccountBalance:
+      type: object
+      properties:
+        accountId:
+          type: string
+        currentBalance:
+          type: number
+        availableBalance:
+          type: number
+        currency:
+          type: string
+        asOfDate:
+          type: string
+          format: date-time
+    TransactionList:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    Transaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        amount:
+          type: number
+        type:
+          type: string
+        balance:
+          type: number
+    PaymentRequest:
+      type: object
+      properties:
+        fromAccountId:
+          type: string
+        toAccountId:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        paymentDate:
+          type: string
+          format: date
+        memo:
+          type: string
+    PaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
