@@ -1,5 +1,6 @@
 aid: huntington-bancshares
-url: https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml
 apis:
   - aid: huntington-bancshares:treasury-management-api
     name: Huntington Bank Treasury Management API
@@ -9,7 +10,8 @@ apis:
       - Payments
       - Open Banking
       - ERP Integration
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: 
+      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.huntington.com
     humanURL: https://hnbdevportal.huntington.com/
     properties:
@@ -25,3 +27,7 @@ apis:
       processes more than 10 million transaction events daily, providing
       real-time visibility into treasury operations, automated payment
       processing, and seamless integration with enterprise systems.
+description: >-
+  Huntington Bancshares is a regional bank holding company that provides full-service
+  consumer and business banking, insurance, investment, mortgage, equipment leasing,
+  and commercial banking services.
