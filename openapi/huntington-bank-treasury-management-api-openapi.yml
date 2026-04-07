@@ -22,10 +22,10 @@ servers:
 tags:
   - name: Accounts
     description: Account information and balances
-  - name: Transactions
-    description: Transaction reporting and history
   - name: Payments
     description: Payment initiation and management
+  - name: Transactions
+    description: Transaction reporting and history
 security:
   - oauth2: []
 paths:

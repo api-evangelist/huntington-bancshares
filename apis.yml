@@ -1,17 +1,15 @@
 aid: huntington-bancshares
-url: 
-  https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml
 apis:
   - aid: huntington-bancshares:treasury-management-api
     name: Huntington Bank Treasury Management API
     tags:
       - Banking
-      - Treasury
-      - Payments
-      - Open Banking
       - ERP Integration
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Open Banking
+      - Payments
+      - Treasury
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.huntington.com
     humanURL: https://hnbdevportal.huntington.com/
     properties:
