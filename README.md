@@ -5,30 +5,32 @@ Huntington Bancshares is a regional bank holding company operating as Huntington
 
 ## Scope
 
-- **Type:** Contract
+- **Type:** Index
 - **Position:** Consuming
 - **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Banking, Treasury, Open Banking, Payments, ERP Integration
+- Banking, ERP Integration, Open Banking, Payments, Treasury
 
 ## Timestamps
 
 - **Created:** 2026-03-21
-- **Modified:** 2026-03-21
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Huntington Bank Treasury Management API
+
 The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem, an API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the platform supports over 500 interfaces and processes more than 10 million transaction events daily, providing real-time visibility into treasury operations, automated payment processing, and seamless integration with enterprise systems.
 
 **Human URL:** [https://hnbdevportal.huntington.com/](https://hnbdevportal.huntington.com/)
 
+**Base URL:** https://api.huntington.com
 
-#### Tags:
+#### Tags
 
- - Banking, Treasury, Payments, Open Banking, ERP Integration
+- Banking, ERP Integration, Open Banking, Payments, Treasury
 
 #### Properties
 
@@ -43,6 +45,6 @@ The Huntington Bank Treasury Management API is part of Huntington's Treasury Man
 
 ## Maintainers
 
-**FN:** API Evangelist
+**FN:** Kin Lane
 
-**Email:** info@apievangelist.com
+**Email:** kin@apievangelist.com
