@@ -4,86 +4,47 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Huntington Bancshares
 providerId: huntington-bancshares
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Banking
-  - ERP Integration
-  - Open Banking
-  - Payments
-  - Treasury
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Huntington Bancshares API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  - Banking
+  - Treasury
+  - Open Banking
+description: Huntington's developer portal does not publish numeric rate limits. The platform is
+  built on Apigee X and Apigee enforces per-API-product quota and spike-arrest policies that are
+  configured per partner contract. Quotas are issued per OAuth client / consumer key based on the
+  treasury management agreement. The platform is sized for 10M+ transaction events daily across
+  the customer base.
+notes: Per-partner numeric limits are negotiated and not publicly published. Apigee gateway controls
+  cap traffic per consumer key.
+sources:
+  - https://hnbdevportal.huntington.com/
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Treasury Management API (per partner)
+    scope: oauth_client
     metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Huntington Bank Treasury Management API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Huntington Bank Treasury Management API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Huntington Bank Treasury Management API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Huntington Bank Treasury Management API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Huntington Bank Treasury Management API
+    limit: not publicly published; negotiated per Apigee API product
+    notes: Apigee quota policies enforce per-product per-minute and per-day caps.
+  - name: Spike arrest
+    scope: oauth_client
+    metric: requests_per_second
+    limit: not publicly published; Apigee spike-arrest policy
+    notes: Burst protection independent of quota; smooths inbound traffic.
 policies:
+  - name: OAuth2 / mTLS Authentication
+    description: All production calls require an OAuth2 client credentials flow plus typically mTLS
+      for treasury-grade endpoints. Tokens are short-lived.
+  - name: Apigee Quota Enforcement
+    description: Per-consumer-key quota and spike-arrest policies enforce both burst and sustained
+      ceilings. Specific values are configured per partner per API product.
+  - name: 429 Throttling Response
+    description: Standard Apigee 429 response with Retry-After header when quotas are exceeded.
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Implement exponential backoff and honor Retry-After header. Coordinate with Huntington
+      partner enablement on quota raises.
+  - name: Sandbox vs Production
+    description: Sandbox endpoints have separate, lower limits intended for integration testing only.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

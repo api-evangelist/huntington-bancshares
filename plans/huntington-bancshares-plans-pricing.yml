@@ -4,146 +4,79 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Huntington Bancshares
 providerId: huntington-bancshares
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Banking
-  - ERP Integration
-  - Open Banking
-  - Payments
   - Treasury
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Open Banking
+  - ERP Integration
+  - Payments
+description: Huntington Bank's Treasury Management Connectivity Ecosystem is partner-only. The Apigee
+  X-hosted developer portal at hnbdevportal.huntington.com requires an existing Huntington commercial-banking
+  relationship for credentials. Pricing for API access is part of the broader treasury management
+  / commercial banking service agreement (account analysis fees, transaction fees, ERP-integration
+  service charges) rather than a published per-call API tier. The platform supports 500+ interfaces
+  and processes 10M+ transaction events daily.
+notes: API consumption is bundled with the Huntington commercial banking treasury management agreement.
+  No public per-call rate card or developer self-service tier is published.
+sources:
+  - https://hnbdevportal.huntington.com/
+  - https://www.huntington.com/Commercial/treasury-management
 plans:
-  - id: huntington-bancshares-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Huntington Bancshares API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.huntington.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.huntington.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Huntington Bank Treasury Management API
-  - id: huntington-bancshares-pro
-    name: Professional
-    type: paid
-    description: Production tier for Huntington Bancshares. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.huntington.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.huntington.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.huntington.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Huntington Bank Treasury Management API
-  - id: huntington-bancshares-enterprise
-    name: Enterprise
+  - id: huntington-bancshares-treasury
+    name: Treasury Management API (Partner-Only)
     type: enterprise
-    description: Custom-negotiated tier for Huntington Bancshares. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+    description: API access for Huntington commercial banking customers. Bundled with the treasury
+      management contract; not a separately published API tier.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: API access
+        name: api_access
+        type: subscription
+        metric: customer
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.huntington.com
+        timeFrame: usage
+        geo: US
         unit: 1
-        price: custom
+        price: bundled with Huntington commercial banking treasury management contract
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.huntington.com
+      - label: Account analysis / transaction fees
+        name: transaction_fees
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: US
         unit: 1
-        price: custom
+        price: per Huntington commercial banking schedule
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Huntington Bank Treasury Management API
+      - name: 500+ treasury management interfaces
+      - name: ERP integration (SAP, Oracle, NetSuite)
+      - name: Real-time transaction visibility
+      - name: Apigee X gateway
+      - name: 10M+ transaction events per day platform capacity
+      - name: Existing Huntington commercial banking relationship required
+  - id: huntington-bancshares-developer-portal
+    name: Developer Portal (Documentation)
+    type: freemium
+    description: Documentation-only access to hnbdevportal.huntington.com. Production credentials
+      require an active commercial-banking relationship.
+    entries:
+      - label: Documentation access
+        name: docs_access
+        type: flat
+        metric: request
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: API specifications
+      - name: Sandbox documentation
+      - name: No production access without contract
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
