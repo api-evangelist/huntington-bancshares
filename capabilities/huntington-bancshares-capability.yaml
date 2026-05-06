@@ -1,0 +1,207 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Huntington Bank Treasury Management API
+  description: The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem,
+    an API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the platform
+    supports over 500 interfaces and processes more than 10 million transaction events daily, providing real-time visibility
+    into treasury operations, automated payment processing, and seamless integration with enterprise systems.
+  tags:
+  - Huntington
+  - Bancshares
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: huntington-bancshares
+    baseUri: https://api.huntington.com/v1
+    description: Huntington Bank Treasury Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{HUNTINGTON_BANCSHARES_TOKEN}}'
+    resources:
+    - name: accounts
+      path: /accounts
+      operations:
+      - name: getaccounts
+        method: GET
+        description: Get treasury accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountid-balances
+      path: /accounts/{accountId}/balances
+      operations:
+      - name: getaccountbalances
+        method: GET
+        description: Get account balances
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: The unique account identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountid-transactions
+      path: /accounts/{accountId}/transactions
+      operations:
+      - name: gettransactions
+        method: GET
+        description: Get account transactions
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: The unique account identifier
+        - name: fromDate
+          in: query
+          type: string
+        - name: toDate
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: payments
+      path: /payments
+      operations:
+      - name: initiatepayment
+        method: POST
+        description: Initiate a payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: huntington-bancshares-rest
+    description: REST adapter for Huntington Bank Treasury Management API.
+    resources:
+    - path: /accounts
+      name: getaccounts
+      operations:
+      - method: GET
+        name: getaccounts
+        description: Get treasury accounts
+        call: huntington-bancshares.getaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountId}/balances
+      name: getaccountbalances
+      operations:
+      - method: GET
+        name: getaccountbalances
+        description: Get account balances
+        call: huntington-bancshares.getaccountbalances
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountId}/transactions
+      name: gettransactions
+      operations:
+      - method: GET
+        name: gettransactions
+        description: Get account transactions
+        call: huntington-bancshares.gettransactions
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /payments
+      name: initiatepayment
+      operations:
+      - method: POST
+        name: initiatepayment
+        description: Initiate a payment
+        call: huntington-bancshares.initiatepayment
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: huntington-bancshares-mcp
+    transport: http
+    description: MCP adapter for Huntington Bank Treasury Management API for AI agent use.
+    tools:
+    - name: getaccounts
+      description: Get treasury accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: huntington-bancshares.getaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getaccountbalances
+      description: Get account balances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: huntington-bancshares.getaccountbalances
+      with:
+        accountId: tools.accountId
+      inputParameters:
+      - name: accountId
+        type: string
+        description: The unique account identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactions
+      description: Get account transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: huntington-bancshares.gettransactions
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      inputParameters:
+      - name: accountId
+        type: string
+        description: The unique account identifier
+        required: true
+      - name: fromDate
+        type: string
+        description: fromDate
+      - name: toDate
+        type: string
+        description: toDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: initiatepayment
+      description: Initiate a payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: huntington-bancshares.initiatepayment
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    HUNTINGTON_BANCSHARES_TOKEN: HUNTINGTON_BANCSHARES_TOKEN
