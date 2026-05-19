@@ -1,0 +1,90 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Huntington Bank Treasury Management API — Transactions
+  description: 'Huntington Bank Treasury Management API — Transactions. 1 operations. Lead operation: Get account transactions.
+    Self-contained Naftiko capability covering one Huntington Bancshares business surface.'
+  tags:
+  - Huntington Bancshares
+  - Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HUNTINGTON_BANCSHARES_API_KEY: HUNTINGTON_BANCSHARES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: huntington-bank-treasury-management-transactions
+    baseUri: https://api.huntington.com/v1
+    description: Huntington Bank Treasury Management API — Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-transactions
+      path: /accounts/{accountId}/transactions
+      operations:
+      - name: gettransactions
+        method: GET
+        description: Get account transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: The unique account identifier
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+        - name: toDate
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.HUNTINGTON_BANCSHARES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: huntington-bank-treasury-management-transactions-rest
+    port: 8080
+    description: REST adapter for Huntington Bank Treasury Management API — Transactions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/transactions
+      name: accounts-accountid-transactions
+      description: REST surface for accounts-accountId-transactions.
+      operations:
+      - method: GET
+        name: gettransactions
+        description: Get account transactions
+        call: huntington-bank-treasury-management-transactions.gettransactions
+        with:
+          accountId: rest.accountId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: huntington-bank-treasury-management-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Huntington Bank Treasury Management API — Transactions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-account-transactions
+      description: Get account transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: huntington-bank-treasury-management-transactions.gettransactions
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      outputParameters:
+      - type: object
+        mapping: $.
