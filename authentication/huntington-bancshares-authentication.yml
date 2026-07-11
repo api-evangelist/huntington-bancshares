@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/huntington-bank-treasury-management-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.huntington.com/oauth/token
+    scopes: 3
+  sources:
+  - openapi/huntington-bank-treasury-management-api-openapi.yml
