@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/huntington-bank-treasury-management-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/huntington-bank-treasury-management-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.huntington.com/oauth/token
+scopes:
+- scope: accounts:read
+  description: Read account data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/huntington-bank-treasury-management-api-openapi.yml
+- scope: payments:write
+  description: Initiate payments
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/huntington-bank-treasury-management-api-openapi.yml
+- scope: transactions:read
+  description: Read transactions
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/huntington-bank-treasury-management-api-openapi.yml

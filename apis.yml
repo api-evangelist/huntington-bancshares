@@ -41,6 +41,8 @@ apis:
       - type: OpenAPI
         url: openapi/huntington-bank-treasury-management-api-openapi.yml
 common:
+  - type: OAuthScopes
+    url: scopes/huntington-bancshares-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/huntington-national-bank
   - type: Portal
