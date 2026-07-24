@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Huntington Bank Treasury Management Accounts Payments API
+  description: The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem, an API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the platform supports over 500 interfaces and processes more than 10 million transaction events daily, providing real-time visibility into treasury operations, automated payment processing, and seamless integration with enterprise systems.
+  version: '1.0'
+  contact:
+    name: Huntington Bank Developer Support
+    url: https://hnbdevportal.huntington.com/
+servers:
+- url: https://api.huntington.com/v1
+  description: Production
+security:
+- oauth2: []
+tags:
+- name: Payments
+  description: Payment initiation and management
+paths:
+  /payments:
+    post:
+      operationId: initiatePayment
+      summary: Initiate a payment
+      description: Initiates a payment transaction from a treasury account.
+      tags:
+      - Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '201':
+          description: Payment initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request
+components:
+  schemas:
+    PaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    PaymentRequest:
+      type: object
+      properties:
+        fromAccountId:
+          type: string
+        toAccountId:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        paymentDate:
+          type: string
+          format: date
+        memo:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.huntington.com/oauth/token
+          scopes:
+            accounts:read: Read account data
+            transactions:read: Read transactions
+            payments:write: Initiate payments
+externalDocs:
+  description: Huntington Bank Developer Portal
+  url: https://hnbdevportal.huntington.com/

@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Huntington Bank Treasury Management Accounts API
+  description: The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem, an API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the platform supports over 500 interfaces and processes more than 10 million transaction events daily, providing real-time visibility into treasury operations, automated payment processing, and seamless integration with enterprise systems.
+  version: '1.0'
+  contact:
+    name: Huntington Bank Developer Support
+    url: https://hnbdevportal.huntington.com/
+servers:
+- url: https://api.huntington.com/v1
+  description: Production
+security:
+- oauth2: []
+tags:
+- name: Accounts
+  description: Account information and balances
+paths:
+  /accounts:
+    get:
+      operationId: getAccounts
+      summary: Get treasury accounts
+      description: Retrieves a list of treasury and deposit accounts for the authenticated business customer.
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+        '401':
+          description: Unauthorized
+  /accounts/{accountId}/balances:
+    get:
+      operationId: getAccountBalances
+      summary: Get account balances
+      description: Retrieves current and available balance information for a specific account.
+      tags:
+      - Accounts
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique account identifier
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalance'
+components:
+  schemas:
+    AccountBalance:
+      type: object
+      properties:
+        accountId:
+          type: string
+        currentBalance:
+          type: number
+        availableBalance:
+          type: number
+        currency:
+          type: string
+        asOfDate:
+          type: string
+          format: date-time
+    Account:
+      type: object
+      properties:
+        accountId:
+          type: string
+        accountType:
+          type: string
+        accountName:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.huntington.com/oauth/token
+          scopes:
+            accounts:read: Read account data
+            transactions:read: Read transactions
+            payments:write: Initiate payments
+externalDocs:
+  description: Huntington Bank Developer Portal
+  url: https://hnbdevportal.huntington.com/
