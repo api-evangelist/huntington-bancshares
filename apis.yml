@@ -7,7 +7,20 @@ description: >-
   500 interfaces that process more than 10 million transaction events daily.
 url: https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/huntington-bancshares.png
 tags:
   - Banking
   - ERP Integration
@@ -19,27 +32,42 @@ created: '2026-03-21'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: huntington-bancshares:treasury-management-api
-    name: Huntington Bank Treasury Management API
-    description: >-
-      The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem, an
-      API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the
-      platform supports over 500 interfaces and processes more than 10 million transaction events daily, providing
-      real-time visibility into treasury operations, automated payment processing, and seamless integration with
-      enterprise systems.
-    humanURL: https://hnbdevportal.huntington.com/
-    baseURL: https://api.huntington.com
-    tags:
-      - Banking
-      - ERP Integration
-      - Open Banking
-      - Payments
-      - Treasury
-    properties:
-      - type: Portal
-        url: https://hnbdevportal.huntington.com/
-      - type: OpenAPI
-        url: openapi/huntington-bank-treasury-management-api-openapi.yml
+- aid: huntington-bancshares:huntington-bancshares-accounts-api
+  name: Huntington Bancshares Accounts API
+  description: Account information and balances
+  humanURL: https://hnbdevportal.huntington.com/
+  baseURL: https://api.huntington.com
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/huntington-bancshares-accounts-api-openapi.yml
+  - type: Portal
+    url: https://hnbdevportal.huntington.com/
+- aid: huntington-bancshares:huntington-bancshares-payments-api
+  name: Huntington Bancshares Payments API
+  description: Payment initiation and management
+  humanURL: https://hnbdevportal.huntington.com/
+  baseURL: https://api.huntington.com
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/huntington-bancshares-payments-api-openapi.yml
+  - type: Portal
+    url: https://hnbdevportal.huntington.com/
+- aid: huntington-bancshares:huntington-bancshares-transactions-api
+  name: Huntington Bancshares Transactions API
+  description: Transaction reporting and history
+  humanURL: https://hnbdevportal.huntington.com/
+  baseURL: https://api.huntington.com
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/huntington-bancshares-transactions-api-openapi.yml
+  - type: Portal
+    url: https://hnbdevportal.huntington.com/
 common:
   - type: AgenticAccess
     url: agentic-access/huntington-bancshares-agentic-access.yml
