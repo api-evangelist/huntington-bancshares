@@ -1,0 +1,18 @@
+{
+  "provider": "huntington-bancshares",
+  "sources": [
+    "huntington-bancshares-accounts-api-openapi.yml",
+    "huntington-bancshares-payments-api-openapi.yml",
+    "huntington-bancshares-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "huntington-bancshares-accounts-api-openapi.yml",
+    "huntington-bancshares-payments-api-openapi.yml",
+    "huntington-bancshares-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
