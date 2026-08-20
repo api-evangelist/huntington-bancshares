@@ -49,6 +49,8 @@ apis:
   humanURL: https://hnbdevportal.huntington.com/
   baseURL: https://api.huntington.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -73,6 +75,8 @@ apis:
   humanURL: https://hnbdevportal.huntington.com/
   baseURL: https://api.huntington.com
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
