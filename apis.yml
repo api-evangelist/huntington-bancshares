@@ -84,6 +84,9 @@ apis:
   - type: Portal
     url: https://hnbdevportal.huntington.com/
 common:
+  - type: CapabilityMap
+    url: capabilities/huntington-bancshares-capability-edges.yml
+    name: Huntington Bancshares Business Capability Map
   - type: AgenticAccess
     url: agentic-access/huntington-bancshares-agentic-access.yml
   - type: DomainSecurity
