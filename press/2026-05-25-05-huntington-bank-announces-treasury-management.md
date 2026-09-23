@@ -1,7 +1,9 @@
 ---
 title: Huntington Bank Announces Treasury Management ...
 url: https://www.prnewswire.com/news-releases/huntington-bank-announces-treasury-management-connectivity-ecosystem-to-empower-businesses-with-more-sophisticated-personalized-financial-intelligence-302593271.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Huntington Bancshares" press release artificial intelligence'
 position: 5
 source: serpapi-google

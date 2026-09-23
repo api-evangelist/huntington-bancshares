@@ -1,7 +1,9 @@
 ---
 title: Veuu Announces Partnership with Huntington Bancshares ...
 url: https://www.nasdaq.com/press-release/veuu-announces-partnership-with-huntington-bancshares-inc.-to-enhance-health-care
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Huntington Bancshares" press release artificial intelligence'
 position: 3
 source: serpapi-google

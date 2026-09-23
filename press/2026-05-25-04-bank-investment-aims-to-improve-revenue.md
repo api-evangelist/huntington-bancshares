@@ -1,7 +1,9 @@
 ---
 title: BANK INVESTMENT AIMS TO IMPROVE REVENUE ...
 url: https://ir.huntington.com/news-presentations/press-releases/detail/854/bank-investment-aims-to-improve-revenue-cycle-for-healthcare-industry
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Huntington Bancshares" press release artificial intelligence'
 position: 4
 source: serpapi-google

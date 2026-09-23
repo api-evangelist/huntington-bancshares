@@ -1,7 +1,9 @@
 ---
 title: Huntington Launches Huntington Heads Up® with AI to ...
 url: https://www.prnewswire.com/news-releases/huntington-launches-huntington-heads-up-with-ai-to-improve-customers-digital-banking-experience-300794687.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Huntington Bancshares" press release artificial intelligence'
 position: 2
 source: serpapi-google
