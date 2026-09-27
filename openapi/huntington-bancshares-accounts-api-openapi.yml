@@ -54,6 +54,26 @@ paths:
                 $ref: '#/components/schemas/AccountBalance'
 components:
   schemas:
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    Account:
+      type: object
+      properties:
+        accountId:
+          type: string
+        accountType:
+          type: string
+        accountName:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
     AccountBalance:
       type: object
       properties:
@@ -68,26 +88,6 @@ components:
         asOfDate:
           type: string
           format: date-time
-    Account:
-      type: object
-      properties:
-        accountId:
-          type: string
-        accountType:
-          type: string
-        accountName:
-          type: string
-        currency:
-          type: string
-        status:
-          type: string
-    AccountList:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
   securitySchemes:
     oauth2:
       type: oauth2
