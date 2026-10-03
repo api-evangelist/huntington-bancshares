@@ -48,6 +48,13 @@ paths:
                 $ref: '#/components/schemas/TransactionList'
 components:
   schemas:
+    TransactionList:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
     Transaction:
       type: object
       properties:
@@ -64,13 +71,6 @@ components:
           type: string
         balance:
           type: number
-    TransactionList:
-      type: object
-      properties:
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
   securitySchemes:
     oauth2:
       type: oauth2
