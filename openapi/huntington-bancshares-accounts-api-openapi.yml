@@ -54,13 +54,6 @@ paths:
                 $ref: '#/components/schemas/AccountBalance'
 components:
   schemas:
-    AccountList:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
     AccountBalance:
       type: object
       properties:
@@ -75,6 +68,13 @@ components:
         asOfDate:
           type: string
           format: date-time
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
     Account:
       type: object
       properties:

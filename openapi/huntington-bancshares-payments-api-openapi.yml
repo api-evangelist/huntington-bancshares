@@ -39,16 +39,6 @@ paths:
           description: Bad request
 components:
   schemas:
-    PaymentResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-        status:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
     PaymentRequest:
       type: object
       properties:
@@ -65,6 +55,16 @@ components:
           format: date
         memo:
           type: string
+    PaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
   securitySchemes:
     oauth2:
       type: oauth2
