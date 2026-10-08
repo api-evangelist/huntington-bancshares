@@ -84,6 +84,12 @@ apis:
   - type: Portal
     url: https://hnbdevportal.huntington.com/
 common:
+  - type: Plans
+    url: plans/huntington-bancshares-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/huntington-bancshares-rate-limits.yml
+  - type: FinOps
+    url: finops/huntington-bancshares-finops.yml
   - type: CapabilityMap
     url: capabilities/huntington-bancshares-capability-edges.yml
     name: Huntington Bancshares Business Capability Map
