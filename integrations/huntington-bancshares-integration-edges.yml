@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/huntington-bancshares/integrations
+- https://n8n.io/integrations/huntington-bancshares/
+- https://composio.dev/toolkits/huntington-bancshares
+- https://monid.ai/tools/huntington-bancshares
+checked:
+- https://composio.dev/toolkits/huntington-bancshares
+- https://monid.ai/tools/huntington-bancshares
+- https://n8n.io/integrations/huntington-bancshares/
+- https://zapier.com/apps/huntington-bancshares/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
