@@ -1,4 +1,4 @@
-# Huntington Bancshares (huntington-bancshares)
+# Huntington Bancshares
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,57 +66,124 @@
 
 Huntington Bancshares is a regional bank holding company that provides full-service consumer and business banking, insurance, investment, mortgage, equipment leasing, and commercial banking services. Huntington operates a developer portal at hnbdevportal.huntington.com built on Apigee X, offering API-first treasury management solutions with over 500 interfaces that process more than 10 million transaction events daily.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/huntington-bancshares/refs/heads/main/apis.yml)
+**Areas:** Banking · ERP Integration · Open Banking · Payments · Treasury · Fortune 1000
 
-## Scope
+## Huntington Bancshares on APIs.io
 
-- **Type:** Index
+Everything profiled for Huntington Bancshares is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/huntington-bancshares/](https://apis.io/providers/huntington-bancshares/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Banking
-- ERP Integration
-- Open Banking
-- Payments
-- Treasury
+- [Huntington Bancshares Accounts API](https://apis.io/apis/huntington-bancshares/huntington-bancshares-accounts-api/) — Account information and balances
+- [Huntington Bancshares Payments API](https://apis.io/apis/huntington-bancshares/huntington-bancshares-payments-api/) — Payment initiation and management
+- [Huntington Bancshares Transactions API](https://apis.io/apis/huntington-bancshares/huntington-bancshares-transactions-api/) — Transaction reporting and history
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-21
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Huntington Bank Treasury Management API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Huntington Bank Treasury Management API is part of Huntington's Treasury Management Connectivity Ecosystem, an API-first platform that enables businesses to unify banking, ERP, and financial tools. Built on Apigee X, the platform supports over 500 interfaces and processes more than 10 million transaction events daily, providing real-time visibility into treasury operations, automated payment processing, and seamless integration with enterprise systems.
+- [Huntington Bancshares Agentic Access](https://apis.io/agentic-access/huntington-bancshares/huntington-bancshares-agentic-access/)
 
-- **Human URL:** [https://hnbdevportal.huntington.com/](https://hnbdevportal.huntington.com/)
-- **Base URL:** `https://api.huntington.com`
+#### Collections (4)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Banking
-- ERP Integration
-- Open Banking
-- Payments
-- Treasury
+- [Huntington Bank Treasury Management Accounts API](https://apis.io/collections/huntington-bancshares/open-huntington-bancshares-accounts-api/)
+- [Huntington Bank Treasury Management Accounts Payments API](https://apis.io/collections/huntington-bancshares/open-huntington-bancshares-payments-api/)
+- [Huntington Bank Treasury Management Accounts Transactions API](https://apis.io/collections/huntington-bancshares/open-huntington-bancshares-transactions-api/)
+- [Huntington Bank Treasury Management API](https://apis.io/collections/huntington-bancshares/open-huntington-bank-treasury-management-api/)
 
-#### Properties
+#### Security (2)
 
-- [Portal](https://hnbdevportal.huntington.com/)
-- [OpenAPI](openapi/huntington-bank-treasury-management-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/huntington-bank-treasury-management-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/huntington-bank-treasury-management-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Huntington Bancshares Authentication](https://apis.io/security/huntington-bancshares/huntington-bancshares-authentication/)
+- [Huntington Bancshares Domain Security](https://apis.io/security/huntington-bancshares/huntington-bancshares-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/huntington-national-bank)
-- [Portal](https://hnbdevportal.huntington.com/)
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Huntington Bancshares Scopes](https://apis.io/scopes/huntington-bancshares/huntington-bancshares-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Huntington Bancshares Plans Pricing](https://apis.io/plans/huntington-bancshares/huntington-bancshares-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Huntington Bancshares Rate Limits](https://apis.io/rate-limits/huntington-bancshares/huntington-bancshares-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Huntington Bancshares Finops](https://apis.io/finops/huntington-bancshares/huntington-bancshares-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.huntington.com/)
-- [Privacy Policy](https://www.huntington.com/privacy)
+- [Privacy policy](https://www.huntington.com/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 15.8 |
+
+**Agent readiness 20.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.0** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/huntington-bancshares/](https://apis.io/providers/huntington-bancshares/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Huntington Bancshares: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/huntington-bancshares/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
